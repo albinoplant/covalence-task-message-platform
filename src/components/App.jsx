@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import './App.css';
 import InputMessage from './InputMessage';
+import Posts from './Feed';
+import Navbar from './Navbar';
 
 export default class App extends Component{
   constructor(props){
     super(props);
     this.state={
-      postedMessages:[],
+      postedMessages:[{
+        inputName:'Author',
+        inputTopic:'My topic',
+        inputMessage:'This is an example message. Have a nice day!\n BYE!'
+      }],
       inputValues:
         {
           inputName:'',
@@ -55,13 +61,17 @@ export default class App extends Component{
   }
   render(){
     return (
-      <div className="container mt-5">
-        <InputMessage 
-          clickSendFunc={this.clickSendHandler}
-          inputNameFunc={this.inputNameHandler}
-          inputTopicFunc={this.inputTopicHandler}
-          inputMessageFunc={this.inputMessageHandler} />
-      </div>
+      <>
+        <Navbar/>
+        <div className="container mt-3">
+          <Posts posts={this.state.postedMessages} />
+          <InputMessage 
+            clickSendFunc={this.clickSendHandler}
+            inputNameFunc={this.inputNameHandler}
+            inputTopicFunc={this.inputTopicHandler}
+            inputMessageFunc={this.inputMessageHandler} />
+        </div>
+      </>
     );
   }
 }
