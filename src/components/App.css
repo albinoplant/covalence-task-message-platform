@@ -15,4 +15,6 @@
         opacity:1;
     }
 }
-
+.enter{
+    animation: enter 1s ease-in;
+}
